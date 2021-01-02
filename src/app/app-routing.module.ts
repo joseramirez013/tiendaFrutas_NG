@@ -7,10 +7,19 @@ import { DefaultComponent } from './public/home/default/default.component';
 
 
 const routes: Routes = [
-  { path:'home', component: DefaultComponent },
-  { path:'', pathMatch: 'full', redirectTo: '/home' },
+  {
+    path:'home',
+    component: DefaultComponent
+  },
+  {
+    path:'',
+    pathMatch: 'full',
+    redirectTo: '/home' },
   /** This must be the last one */
-  { path: '**', redirectTo: '/home' }
+  {
+    path: '**',
+    redirectTo: '/home'
+  }
 ];
 
 @NgModule({
