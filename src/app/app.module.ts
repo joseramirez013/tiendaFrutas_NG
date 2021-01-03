@@ -9,6 +9,7 @@ import { HeroComponent } from './public/master-page/hero/hero.component';
 import { FooterComponent } from './public/master-page/footer/footer.component';
 import { AppRoutingModule } from './app-routing.module';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +21,7 @@ import { AppRoutingModule } from './app-routing.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
