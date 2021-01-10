@@ -35,3 +35,7 @@ legend{
   color: #545454;
   margin: 0 20 0 20;
 }
+
+.warning-validator strong{
+  color: red;
+}

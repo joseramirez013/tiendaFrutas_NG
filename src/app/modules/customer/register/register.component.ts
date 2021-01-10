@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormsConfig } from '../../../config/forms-config';
+import { CustomerService } from '../../../services/customer.service';
+import { CustomerModel } from 'src/app/models/customer.model';
+import { CustomerModule } from '../customer.module';
+import { Router } from '@angular/router';
+
+declare const showMessage: any; // Declarar showMessage para que esta pueda ser reconocida como una función
 
 @Component({
   selector: 'app-register',
@@ -9,8 +16,20 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class RegisterComponent implements OnInit {
 
   fgValidator: FormGroup;
+  documentMinLength = FormsConfig.DOCUMENT_MIN_LENGTH;
+  nameMinLength = FormsConfig.NAME_MIN_LENGTH;
+  phoneMinLength = FormsConfig.PHONE_MIN_LENGTH;
+  phoneMaxLength = FormsConfig.PHONE_MAX_LENGTH;
+  addressMinLength = FormsConfig.ADDRESS_MIN_LENGTH;
+  cityMinLength = FormsConfig.CITY_MIN_LENGTH;
 
-  constructor(private fb: FormBuilder) { }
+
+
+
+  constructor(
+    private fb: FormBuilder,
+    private service: CustomerService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.FormBuilding();
@@ -18,25 +37,47 @@ export class RegisterComponent implements OnInit {
 
   FormBuilding(){
     this.fgValidator = this.fb.group({
-      document: ['', [Validators.required, Validators.minLength(7)]],
-      name: ['', [Validators.required, Validators.minLength(2)]],
-      lastname: ['', [Validators.required, Validators.minLength(2)]],
-      phone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(12)]],
+      document: ['', [Validators.required, Validators.minLength(this.documentMinLength)]],
+      name: ['', [Validators.required, Validators.minLength(this.nameMinLength)]],
+      lastname: ['', [Validators.required, Validators.minLength(this.nameMinLength)]],
+      phone: ['', [Validators.required, Validators.minLength(this.phoneMinLength), Validators.maxLength(this.phoneMaxLength)]],
       email: ['', [Validators.required, Validators.email]],
-      address: ['', [Validators.required, Validators.minLength(5)]],
-      city: ['', [Validators.required, Validators.minLength(5)]]
+      address: ['', [Validators.required, Validators.minLength(this.addressMinLength)]],
+      city: ['', [Validators.required, Validators.minLength(this.cityMinLength)]]
     });
   }
 
   CustomerRegisterFn(){
     if(this.fgValidator.invalid){ // Verifica si el formulario es invalido
-      alert("Formulario invalido!"); // Mensaje cuando el formulario inválido
+      showMessage("Formulario invalido!"); // Mensaje cuando el formulario inválido
       return false;
+    }else{
+      //showMessage("Registrando..."); // Mensaje cuando el formulario es válido
+      let model = this.getCustomerData(); // Retorna un objeto tipo modelo, que es el que se envia al servicio
+      this.service.CustomerRegistering(model).subscribe(
+        data =>{
+          showMessage("Registro exitoso, hemos enviado su password a su correo electronico");
+          this.router.navigate(['/security/login']);
+        },
+        error => {
+          showMessage("Error al registrarse ");
+        }
+      );
     }
-    alert("Registrando nuevo usuario..."); // Mensaje cuando el formulario es válido
-    return false;
   }
 
+  getCustomerData(): CustomerModel {
+    let model = new CustomerModel(); // Define un model
+    model.address = this.fgv.address.value; // Obtener el valor del campo address
+    model.city = this.fgv.city.value; // Obtener el valor del campo city
+    model.document = this.fgv.document.value; // Obtener el valor del campo document
+    model.email = this.fgv.email.value; // Obtener el valor del campo email
+    model.name = this.fgv.name.value; // Obtener el valor del campo name
+    model.lastname = this.fgv.lastname.value; // Obtener el valor del campo lastname
+    model.phone = this.fgv.phone.value; // Obtener el valor del campo phone
+    return model;
+  }
+  //Devuelve los controles
   get fgv(){
     return this.fgValidator.controls;
   }
