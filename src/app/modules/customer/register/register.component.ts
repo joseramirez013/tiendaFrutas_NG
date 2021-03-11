@@ -46,7 +46,9 @@ export class RegisterComponent implements OnInit {
       city: ['', [Validators.required, Validators.minLength(this.cityMinLength)]]
     });
   }
-
+  /**
+  * Method to validate credentials of a customer
+  */
   CustomerRegisterFn(){
     if(this.fgValidator.invalid){ // Verifica si el formulario es invalido
       showMessage("Formulario invalido!"); // Mensaje cuando el formulario inválido
@@ -65,7 +67,9 @@ export class RegisterComponent implements OnInit {
       );
     }
   }
-
+  /**
+  * Get user data in a model
+  */
   getCustomerData(): CustomerModel {
     let model = new CustomerModel(); // Define un model
     model.address = this.fgv.address.value; // Obtener el valor del campo address
@@ -74,7 +78,7 @@ export class RegisterComponent implements OnInit {
     model.email = this.fgv.email.value; // Obtener el valor del campo email
     model.name = this.fgv.name.value; // Obtener el valor del campo name
     model.lastname = this.fgv.lastname.value; // Obtener el valor del campo lastname
-    model.phone = this.fgv.phone.value; // Obtener el valor del campo phone
+    model.telephone = this.fgv.phone.value; // Obtener el valor del campo phone
     return model;
   }
   //Devuelve los controles
