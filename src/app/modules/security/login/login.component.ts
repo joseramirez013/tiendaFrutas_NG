@@ -45,13 +45,13 @@ export class LoginComponent implements OnInit {
       let model = this.getLoginData(); // Retorna un objeto tipo modelo, que es el que se envia al servicio
       console.log(model);
       this.service.CustomerLogin(model).subscribe(
-        userInfo =>{
-          this.service.saveSessionData(userInfo);
+        data =>{
+          this.service.saveSessionData(data);
           showMessage("Welcome to your account.");
           this.router.navigate(['/home']);
         },
         error => {
-          showMessage("Invalid data. ");
+          showMessage("Invalid data.");
         }
       );
     }

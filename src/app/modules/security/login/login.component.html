@@ -13,7 +13,7 @@
                 This field is required.
               </strong>
               <strong *ngIf="fgv.username.errors.minlength">
-                This field must be at least {{ nameMinLength }} characters long.
+                This field must be at least {{ usernameMinLength }} characters long.
               </strong>
             </div>
           </div>
@@ -33,9 +33,8 @@
         <div class="row">
           <div class="input-field col s12">
             <button (click)="LoginCustomerFn()" class="btn waves-effect waves-light" type="button" name="action">Login
-   <i class="material-icons right">send</i>
- </button>
-
+              <i class="material-icons right">send</i>
+            </button>
           </div>
         </div>
         <div class="row">
