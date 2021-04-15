@@ -79,6 +79,11 @@ export class SecurityService {
     return currentSession;
   }
 
+  getToken():String{
+    let currentSession = JSON.parse(this.getSessionData());
+    return currentSession.token;
+  }
+
   /**
   * Clear session data
   */
