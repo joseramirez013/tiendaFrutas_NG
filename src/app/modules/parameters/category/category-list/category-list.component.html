@@ -30,7 +30,7 @@
                 <a routerLink="/parameters/category-edition/{{r.id}}" routerLinkActive="router-link-active" class="waves-effect waves-light btn"><i class="material-icons left">edit</i>Edit</a>
             </td>
             <td>
-                <button (click)="RemoveConfirmation(r.id)" class="btn waves-effect waves-light" type="button">Delete
+                <button (click)="RemoveConfirmation(r.id)" class="btn waves-effect waves-light red" type="button">Delete
                     <i class="material-icons left">delete</i>
                   </button>
             </td>
@@ -39,7 +39,7 @@
     </tbody>
 </table>
 <pagination-controls (pageChange)="page = $event"></pagination-controls>
-<ngx-spinner></ngx-spinner>
+<!-- <ngx-spinner></ngx-spinner> -->
 
 <!-- Modal Structure -->
 <div id="removeConfirmationModal" class="modal">

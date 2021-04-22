@@ -26,6 +26,7 @@ export class CategoryService {
   saveNewRecord(record: CategoryModel):Observable<CategoryModel>{
     return this.http.post<CategoryModel>(`${ServiceConfig.BASE_URL}${this.entity}`, record, {
       headers: new HttpHeaders({
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${this.token}`
       })
     });

@@ -24,3 +24,9 @@ body, input[type="text"], button {
 .warning-validator strong{
   color: red;
 }
+
+legend{
+  font-size: 2em;
+  color: #545454;
+  margin: 0 20 0 20;
+}
