@@ -48,7 +48,9 @@
       <p>Are you sure remove this record?</p>
     </div>
     <div class="modal-footer">
-        <a class="modal-close waves-effect waves-green btn-flat">Confirmation</a>
-      <a class="modal-close red waves-effect waves-green btn-flat">Close</a>
+        <button (click)="RemoveRecord()" class="btn waves-effect waves-light red" type="button">Confirm
+            <i class="material-icons left">delete</i>
+          </button>
+      <a class="modal-close waves-effect waves-green btn-flat">Close</a>
     </div>
   </div>
