@@ -79,6 +79,20 @@ export class SecurityService {
     return currentSession;
   }
 
+  sessionExist(): Boolean {
+    let currentSession = this.getSessionData();
+    return (currentSession) ? true : false;
+  }
+
+  /**
+   * verify if user in session has the role of parameter
+   * @param roleId role Id to verify
+   */
+  VerifyRoleInSession(roleId): Boolean {
+    let currentSession = JSON.parse(this.getSessionData());
+    return (currentSession.role == roleId);
+  }
+
   getToken():String{
     let currentSession = JSON.parse(this.getSessionData());
     return currentSession.token;
