@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { UserModel } from '../models/user.model';
+import { UserModel } from '../models/security/user.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ServiceConfig } from '../config/service-config';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { PasswordResetModel } from '../models/security/password-reset.model';
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +45,12 @@ export class SecurityService {
   */
   CustomerLogin(user: UserModel): Observable<any> {
     return this.http.post<any>(`${ServiceConfig.BASE_URL}login`, user, {
+      headers: new HttpHeaders({})
+    });
+  }
+
+  PasswordReset(data: PasswordResetModel): Observable<any> {
+    return this.http.post<any>(`${ServiceConfig.BASE_URL}password-reset`, data, {
       headers: new HttpHeaders({})
     });
   }

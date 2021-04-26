@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { FormsConfig } from 'src/app/config/forms-config';
-import { UserModel } from 'src/app/models/user.model';
+import { UserModel } from 'src/app/models/security/user.model';
 import { Router } from '@angular/router';
 import { SecurityService } from '../../../services/security.service';
 import MD5 from 'crypto-js/md5';
