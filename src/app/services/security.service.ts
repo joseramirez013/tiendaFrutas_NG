@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ServiceConfig } from '../config/service-config';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { PasswordResetModel } from '../models/security/password-reset.model';
+import { ChangePasswordModel } from '../models/security/change-password.model';
 
 @Injectable({
   providedIn: 'root'
@@ -49,9 +50,19 @@ export class SecurityService {
     });
   }
 
+
   PasswordReset(data: PasswordResetModel): Observable<any> {
     return this.http.post<any>(`${ServiceConfig.BASE_URL}password-reset`, data, {
       headers: new HttpHeaders({})
+    });
+  }
+
+
+  ChangePassword(data: ChangePasswordModel): Observable<any> {
+    return this.http.post<any>(`${ServiceConfig.BASE_URL}change-password`, data, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.getToken()}`
+      })
     });
   }
 
@@ -103,6 +114,11 @@ export class SecurityService {
   getToken():String{
     let currentSession = JSON.parse(this.getSessionData());
     return currentSession.token;
+  }
+
+  getUserId():String{
+    let currentSession = JSON.parse(this.getSessionData());
+    return currentSession.id;
   }
 
   /**
