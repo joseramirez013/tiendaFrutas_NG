@@ -17,6 +17,12 @@
                 Stock
             </td>
             <td>
+                Brand
+            </td>
+            <td>
+                Category
+            </td>
+            <td>
                 Edit
             </td>
             <td>
@@ -37,6 +43,12 @@
             </td>
             <td>
                 {{r.stock}}
+            </td>
+            <td>
+                {{r.brand.name}}
+            </td>
+            <td>
+                {{r.category.name}}
             </td>
             <td>
                 <a routerLink="/products/product-edition/{{r.id}}" routerLinkActive="router-link-active" class="waves-effect waves-light btn"><i class="material-icons left">edit</i>Edit</a>

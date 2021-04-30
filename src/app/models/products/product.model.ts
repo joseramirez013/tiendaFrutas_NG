@@ -1,3 +1,6 @@
+import { BrandModel } from "../parameters/brand.model";
+import { CategoryModel } from "../parameters/category.model";
+
 export class ProductModel{
     id?: String;
     code: String;
@@ -8,4 +11,6 @@ export class ProductModel{
     rate: number;
     categoryId: String;
     brandId: String;
+    brand: BrandModel;
+    category: CategoryModel;
 }

@@ -11,6 +11,7 @@ import { SecurityService } from '../security.service';
 export class ProductService {
   entity = 'product';
   token: String = '';
+  filter: String = '?filter={"include":[{"relation":"category"},{"relation":"brand"}]}';
 
   constructor(private http: HttpClient, private securityService: SecurityService) {
     this.token = this.securityService.getToken();
@@ -19,7 +20,7 @@ export class ProductService {
  * Get all records of a collection
  */
   getAllRecords(): Observable<ProductModel[]>{
-    return this.http.get<ProductModel[]>(`${ServiceConfig.BASE_URL}${this.entity}`);
+    return this.http.get<ProductModel[]>(`${ServiceConfig.BASE_URL}${this.entity}/${this.filter}`);
   }
 
   /**

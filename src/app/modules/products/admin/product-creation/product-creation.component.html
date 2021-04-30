@@ -58,20 +58,16 @@
             </div>
           </div>
           <div class="input-field col s4">
-            <select formControlName="categoryId">
-              <option selected value="1">Category 1</option>
-              <option value="2">Category 2</option>
-              <option value="3">Option 3</option>
+            <select class="browser-default" formControlName="categoryId">
+              <option *ngFor="let category of categoryList" value="{{category.id}}">{{category.name}}</option>
             </select>
-            <label>Category</label>
+            <!-- <label>Category</label> -->
           </div>
           <div class="input-field col s4">
-            <select formControlName="brandId">
-              <option selected value="1">Brand 1</option>
-              <option value="2">Brand 2</option>
-              <option value="3">Option 3</option>
+            <select class="browser-default" formControlName="brandId">
+              <option *ngFor="let brand of brandList" value="{{brand.id}}">{{brand.name}}</option>
             </select>
-            <label>Brand</label>
+            <!-- <label>Brand</label> -->
           </div>
       </div>
       <div class="row">
