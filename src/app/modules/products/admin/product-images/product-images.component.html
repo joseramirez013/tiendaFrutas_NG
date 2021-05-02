@@ -1,0 +1,122 @@
+<fieldset>
+    <legend>Product Images</legend>
+    <div class="row">
+        <form [formGroup]="fgValidator">
+            <div class="row">
+                <div class="col s6 m6">
+                    <div class="file-field input-field">
+                        <div class="btn">
+                            <span>Image</span>
+                            <input type="file" (change)="onFileSelect($event)">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text">
+                        </div>
+                    </div>
+                    <input type="text" formControlName="path" />
+                </div>
+                <div class="input-field col s3">
+                    <input formControlName="order" id="first_name" type="number" class="validate">
+                    <label for="first_name">Order</label>
+                </div>
+                <div class="input-field col s3">
+                    <button class="btn waves-effect waves-light" (click)="UploadImageFn()" type="button" name="action">Upload
+                        <i class="material-icons right">send</i>
+                      </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        <div class="col s4 m6">
+            <div class="card">
+                <div class="card-image">
+                    <img src="images/sample-1.jpg">
+                    <span class="card-title">Card Title</span>
+                </div>
+                <div class="card-content">
+                    <p>I am a very simple card. I am good at containing small bits of information.
+                        I am convenient because I require little markup to use effectively.</p>
+                </div>
+                <div class="card-action">
+                    <a href="#">This is a link</a>
+                </div>
+            </div>
+        </div>
+        <div class="col s4 m6">
+            <div class="card">
+                <div class="card-image">
+                    <img src="images/sample-1.jpg">
+                    <span class="card-title">Card Title</span>
+                </div>
+                <div class="card-content">
+                    <p>I am a very simple card. I am good at containing small bits of information.
+                        I am convenient because I require little markup to use effectively.</p>
+                </div>
+                <div class="card-action">
+                    <a href="#">This is a link</a>
+                </div>
+            </div>
+        </div>
+        <div class="col s4 m6">
+            <div class="card">
+                <div class="card-image">
+                    <img src="images/sample-1.jpg">
+                    <span class="card-title">Card Title</span>
+                </div>
+                <div class="card-content">
+                    <p>I am a very simple card. I am good at containing small bits of information.
+                        I am convenient because I require little markup to use effectively.</p>
+                </div>
+                <div class="card-action">
+                    <a href="#">This is a link</a>
+                </div>
+            </div>
+        </div>
+        <div class="col s4 m6">
+            <div class="card">
+                <div class="card-image">
+                    <img src="images/sample-1.jpg">
+                    <span class="card-title">Card Title</span>
+                </div>
+                <div class="card-content">
+                    <p>I am a very simple card. I am good at containing small bits of information.
+                        I am convenient because I require little markup to use effectively.</p>
+                </div>
+                <div class="card-action">
+                    <a href="#">This is a link</a>
+                </div>
+            </div>
+        </div>
+        <div class="col s4 m6">
+            <div class="card">
+                <div class="card-image">
+                    <img src="images/sample-1.jpg">
+                    <span class="card-title">Card Title</span>
+                </div>
+                <div class="card-content">
+                    <p>I am a very simple card. I am good at containing small bits of information.
+                        I am convenient because I require little markup to use effectively.</p>
+                </div>
+                <div class="card-action">
+                    <a href="#">This is a link</a>
+                </div>
+            </div>
+        </div>
+        <div class="col s4 m6">
+            <div class="card">
+                <div class="card-image">
+                    <img src="images/sample-1.jpg">
+                    <span class="card-title">Card Title</span>
+                </div>
+                <div class="card-content">
+                    <p>I am a very simple card. I am good at containing small bits of information.
+                        I am convenient because I require little markup to use effectively.</p>
+                </div>
+                <div class="card-action">
+                    <a href="#">This is a link</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>
