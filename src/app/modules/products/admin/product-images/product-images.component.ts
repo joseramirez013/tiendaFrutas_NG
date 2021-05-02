@@ -5,6 +5,7 @@ import { ProductImageModel } from 'src/app/models/products/product-image.model';
 import { ProductImagesService } from 'src/app/services/products/product-images.service';
 
 declare const showMessage: any;
+declare const showRemoveConfirmationWindow: any;
 
 @Component({
   selector: 'app-product-images',
@@ -15,7 +16,8 @@ export class ProductImagesComponent implements OnInit {
 
   fgValidator: FormGroup;
   productId: String;
-
+  imagesList: ProductImageModel[];
+  idToRemove: String;
 
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute,
@@ -25,6 +27,18 @@ export class ProductImagesComponent implements OnInit {
     this.FormBuilding();
     this.productId = this.route.snapshot.params["id"];
     this.fgv.productId.setValue(this.productId);
+    this.getAllImagesByProductId();
+  }
+
+  getAllImagesByProductId() {
+    this.service.getRecordsByProductId(this.productId).subscribe(
+      data => {
+        this.imagesList = data;
+      },
+      err => {
+        showMessage("Error loading current images of product.");
+      }
+    );
   }
 
   FormBuilding() {
@@ -43,11 +57,12 @@ export class ProductImagesComponent implements OnInit {
       formData.append('file', this.fgv.path.value);
       // call service
       this.service.UploadProductImage(formData, this.fgv.order.value, this.fgv.productId.value).subscribe(
-        data =>{
+        data => {
           this.fgv.path.setValue(data.filename);
           showMessage("The image file was uploaded successfully.");
+          this.getAllImagesByProductId();
         },
-        err =>{
+        err => {
           showMessage("Error uploading image file.");
         }
       );
@@ -68,6 +83,22 @@ export class ProductImagesComponent implements OnInit {
 
   get fgv() {
     return this.fgValidator.controls;
+  }
+
+  RemoveConfirmation(id){
+    this.idToRemove = id;
+    showRemoveConfirmationWindow();
+  }
+
+  RemoveImage(){
+    this.service.DeleteRecord(this.idToRemove).subscribe(
+      data=>{
+        this.getAllImagesByProductId();
+      },
+      err=>{
+        showMessage("Error removing that image.");
+      }
+    );
   }
 
 }

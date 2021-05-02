@@ -5,6 +5,6 @@ export class ProductImageModel {
     id?: String;
     path: String;
     order: number;
-    product: ProductModel;
+    product?: ProductModel;
     productId: String;
 }

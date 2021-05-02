@@ -33,9 +33,21 @@ export class ProductImagesService {
     return this.http.get<ProductImageModel>(`${ServiceConfig.BASE_URL}${this.entity}/${id}`);
   }
 
+  getRecordsByProductId(productId: String): Observable<ProductImageModel[]> {
+    return this.http.get<ProductImageModel[]>(`${ServiceConfig.BASE_URL}/products/${productId}/images`);
+  }
+
 
   UploadProductImage(formData: FormData, order: number, productId: String): Observable<UploadImageModel> {
     return this.http.post<UploadImageModel>(`${ServiceConfig.BASE_URL}productImage?productId=${productId}&order=${order}`, formData, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.token}`
+      })
+    });
+  }
+
+  DeleteRecord(recordId: String):Observable<any>{
+    return this.http.delete(`${ServiceConfig.BASE_URL}/product-image/${recordId}`, {
       headers: new HttpHeaders({
         Authorization: `Bearer ${this.token}`
       })
