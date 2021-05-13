@@ -11,7 +11,7 @@ import { SecurityService } from '../security.service';
 export class ProductService {
   entity = 'product';
   token: String = '';
-  filter: String = '?filter={"include":[{"relation":"category"},{"relation":"brand"}]}';
+  filter: String = '?filter={"include":[{"relation":"category"},{"relation":"brand"},{"relation":"images"}]}';
 
   constructor(private http: HttpClient, private securityService: SecurityService) {
     this.token = this.securityService.getToken();
