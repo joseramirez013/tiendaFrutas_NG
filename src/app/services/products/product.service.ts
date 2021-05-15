@@ -28,7 +28,7 @@ export class ProductService {
    * @param id id to search
    */
   getRecordById(id: String): Observable<ProductModel>{
-    return this.http.get<ProductModel>(`${ServiceConfig.BASE_URL}${this.entity}/${id}`);
+    return this.http.get<ProductModel>(`${ServiceConfig.BASE_URL}${this.entity}/${id}${this.filter}`);
   }
   /**
    * Add new record to product collection
@@ -54,6 +54,18 @@ export class ProductService {
   DeleteRecord(recordId: String):Observable<any>{
     return this.http.delete(`${ServiceConfig.BASE_URL}${this.entity}/${recordId}`, {
       headers: new HttpHeaders({
+        Authorization: `Bearer ${this.token}`
+      })
+    });
+  }
+
+  addToShoppingCart(cartId, productId){
+    return this.http.post<ProductModel>(`${ServiceConfig.BASE_URL}${this.entity}`, {
+      productId: productId,
+      cartId: cartId
+    }, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${this.token}`
       })
     });
