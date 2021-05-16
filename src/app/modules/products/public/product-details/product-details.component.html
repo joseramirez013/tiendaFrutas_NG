@@ -1,3 +1,4 @@
+<!--
 <div class="row">
   <div class="col lg4 sm4">
     <img *ngFor="let i of images" class="materialboxed"
@@ -5,6 +6,7 @@
       src="http://localhost:3000/files/2/{{i.id}}">
   </div>
 </div>
+
 <h6>{{productDetails.description}}</h6>
 <table>
   <thead>
@@ -40,7 +42,19 @@
     </tr>
   </tbody>
 </table>
+-->
 
-<button (click)="AddToShoppingCart()" class="btn waves-effect waves-light red" type="button">Add
-  <i class="material-icons left">add_shopping_cart</i>
-</button>
+<div class="card">
+  <img *ngFor="let i of images" class="card-img-top img-fluid" src="http://localhost:3000/files/2/{{i.id}}">
+  <div class="card-body">
+    <h5 class="card-title">{{productDetails.name}}</h5>
+    <p class="card-text">Description: {{productDetails.description}}</p>
+    <p class="card-text">Price: {{productDetails.price}}</p>
+    <p class="card-text">Category: {{productDetails.category.name}}</p>
+    <p class="card-text">Brand: {{productDetails.brand.name}}</p>
+    <button (click)="AddToShoppingCart()" class="btn waves-effect waves-light red" type="button">Add
+      <i class="material-icons left">add_shopping_cart</i>
+    </button>
+  </div>
+</div>
+

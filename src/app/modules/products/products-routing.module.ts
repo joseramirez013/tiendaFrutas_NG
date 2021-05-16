@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AdminAuthenticatedGuard } from 'src/app/guards/admin-authenticated.guard';
 import { ProductCreationComponent } from './admin/product-creation/product-creation.component';
 import { ProductEditionComponent } from './admin/product-edition/product-edition.component';
 import { ProductImagesComponent } from './admin/product-images/product-images.component';
@@ -14,11 +15,13 @@ const routes: Routes = [
   },
   {
     path: 'product-creation',
-    component: ProductCreationComponent
+    component: ProductCreationComponent,
+    canActivate: [AdminAuthenticatedGuard]
   },
   {
     path: 'product-edition/:id',
-    component: ProductEditionComponent
+    component: ProductEditionComponent,
+    canActivate: [AdminAuthenticatedGuard]
   },
   {
     path: 'product-images/:id',

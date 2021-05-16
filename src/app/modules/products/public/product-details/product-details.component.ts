@@ -5,6 +5,8 @@ import { ProductModel } from 'src/app/models/products/product.model';
 import { ProductService } from 'src/app/services/products/product.service';
 import { SecurityService } from 'src/app/services/security.service';
 
+declare const showMessage: any;
+
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
@@ -41,10 +43,10 @@ export class ProductDetailsComponent implements OnInit {
     let cartId = this.secService.getCartId();
     this.service.addToShoppingCart(cartId, this.productId).subscribe(
       data=>{
-        alert("OK")
+        showMessage("Your product has been sucessfully added to the shopping cart!");
       },
       err=>{
-
+        showMessage("Fault to add your product to the shopping cart");
       }
     );
   }

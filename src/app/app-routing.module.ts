@@ -28,8 +28,7 @@ const routes: Routes = [
   },
   {
     path: 'products',
-    loadChildren: () => import('./modules/products/products.module').then(m => m.ProductsModule),
-    canActivate: [AdminAuthenticatedGuard]
+    loadChildren: () => import('./modules/products/products.module').then(m => m.ProductsModule)
   },
   {
     path: 'customer',
