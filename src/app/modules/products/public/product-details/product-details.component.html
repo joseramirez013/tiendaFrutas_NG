@@ -52,7 +52,8 @@
     <p class="card-text">Price: {{productDetails.price}}</p>
     <p class="card-text">Category: {{productDetails.category.name}}</p>
     <p class="card-text">Brand: {{productDetails.brand.name}}</p>
-    <button (click)="AddToShoppingCart()" class="btn waves-effect waves-light red" type="button">Add
+    <p class="card-text">Inventory: {{productDetails.stock}}</p>
+    <button (click)="AddToShoppingCart()" class="btn waves-effect waves-light orange" type="button">Añadir
       <i class="material-icons left">add_shopping_cart</i>
     </button>
   </div>
