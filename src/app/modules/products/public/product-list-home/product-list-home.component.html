@@ -1,16 +1,41 @@
 <div class="row">
-    <div *ngFor="let p of productList" class="col s4 m6">
-        <div class="card">
+    <div *ngFor="let p of productList" class="col s3 m3">
+        <div class="col s12 m12 card">
             <div class="card-image">
                 <img src="http://localhost:3000/files/2/{{p.images[0].id}}" class="productImage" />
-                <span class="card-title">Name: {{p.name}}</span>
+                <!-- <span class="card-title">Name: {{p.name}}</span> -->
             </div>
             <div class="card-content">
-                <button class="btn waves-effect waves-light blue" (click)="OpenDetails(p.id)" type="button"
-                    name="action">Ver mas
-                    <i class="material-icons right">pageview</i>
-                </button>
+                <h5 class="card-text">{{p.name | titlecase}}</h5>
+                <p class="card-text">Precio: {{p.price | currency}}</p>
+                <p class="card-text">Disponibles: {{p.stock}}</p>
             </div>
+            
+            <form [formGroup]="fgValidator">
+                <div class="card-tabs">
+                    <ul class="tabs tabs-fixed-width">
+                        <li class="tab">
+                            <button class="waves-effect waves-light btn-small blue" (click)="OpenDetails(p.id)"
+                                type="button" name="action">Ver mas
+                                <i class="material-icons right">pageview</i>
+                            </button>
+                        </li>
+                        &nbsp;
+                        <li class="tab">
+                            <!-- Boton carrito de compras -->
+                            <button (click)="AddToShoppingCart()" class="waves-effect waves-light btn-small orange"
+                                type="button">Añadir
+                                <i class="material-icons left">add_shopping_cart</i>
+                            </button>
+                        </li>
+                        &nbsp;
+                        <li class="tab">
+                            <input id="amount" formControlName="amount" type="number" class="validate">
+                            <label for="amount">Qty.</label>                        
+                        </li>
+                    </ul>
+                </div>
+            </form>
         </div>
     </div>
 </div>

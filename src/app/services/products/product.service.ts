@@ -59,6 +59,7 @@ export class ProductService {
     });
   }
 
+  /*
   addToShoppingCart(cartId, productId){
     return this.http.post<ProductModel>(`${ServiceConfig.BASE_URL}${this.entity}`, {
       productId: productId,
@@ -70,5 +71,15 @@ export class ProductService {
       })
     });
   }
+  */
+
+ AddToShoppingCart(formData: any): Observable<Boolean>{
+  return this.http.post<Boolean>(`${ServiceConfig.BASE_URL}product-sale-item`, formData, {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.token}`
+    })
+  });
+}
   
 }

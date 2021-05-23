@@ -11,8 +11,15 @@ document.addEventListener('DOMContentLoaded', function() {
   var instances = M.Materialbox.init(elems, {});
 });
 
+/*
+$(document).ready(function() {
+  M.updateTextFields();
+});
+*/
+
 function initSelect() {
   //document.addEventListener('DOMContentLoaded', function() {
   var elems = document.querySelectorAll('select');
   var instances = M.FormSelect.init(elems, {});
+  M.updateTextFields();
 }

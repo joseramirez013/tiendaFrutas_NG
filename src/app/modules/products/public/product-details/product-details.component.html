@@ -49,13 +49,17 @@
   <div class="card-body">
     <h5 class="card-title">{{productDetails.name}}</h5>
     <p class="card-text">Description: {{productDetails.description}}</p>
-    <p class="card-text">Price: {{productDetails.price}}</p>
+    <p class="card-text">Price: {{productDetails.price | currency}}</p>
     <p class="card-text">Category: {{productDetails.category.name}}</p>
     <p class="card-text">Brand: {{productDetails.brand.name}}</p>
     <p class="card-text">Inventory: {{productDetails.stock}}</p>
+    <!-- Boton carrito de compras -->
+    <!-- 
     <button (click)="AddToShoppingCart()" class="btn waves-effect waves-light orange" type="button">Añadir
       <i class="material-icons left">add_shopping_cart</i>
     </button>
+    -->
+    <a routerLink="/parameters/home" class="waves-effect waves-light btn blue"><i class="material-icons right">arrow_back</i>Atras</a>
   </div>
 </div>
 

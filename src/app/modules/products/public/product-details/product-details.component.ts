@@ -27,7 +27,7 @@ export class ProductDetailsComponent implements OnInit {
     this.getDataOfProduct();
   }
 
-  getDataOfProduct(){
+  getDataOfProduct() {
     this.service.getRecordById(this.productId).subscribe(
       data => {
         this.productDetails = data;
@@ -38,16 +38,23 @@ export class ProductDetailsComponent implements OnInit {
       }
     );
   }
-
-  AddToShoppingCart(){
-    let cartId = this.secService.getCartId();
-    this.service.addToShoppingCart(cartId, this.productId).subscribe(
-      data=>{
-        showMessage("Your product has been sucessfully added to the shopping cart!");
-      },
-      err=>{
-        showMessage("Fault to add your product to the shopping cart");
-      }
-    );
+  /**
+   * Agregar el producto al carrito de compras
+   */
+  /*
+    AddToShoppingCart(){
+      let cartId = this.secService.getCartId(); //Devuelve el id del carrito de compras del usuario que esta en sesion
+      //Enviar dentro del producto el cartId y el productId
+      this.service.addToShoppingCart(cartId, this.productId).subscribe(
+        data=>{
+          showMessage("Your product has been sucessfully added to the shopping cart!");
+        },
+        err=>{
+          showMessage("Fault to add your product to the shopping cart");
+        }
+      );
+    }
   }
+  */
+
 }
