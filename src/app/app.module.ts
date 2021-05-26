@@ -10,7 +10,7 @@ import { FooterComponent } from './public/master-page/footer/footer.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsModule } from './modules/products/products.module';
-
+//import { FilterPipe } from './pipes/filter.pipe';
 
 
 @NgModule({
@@ -20,7 +20,8 @@ import { ProductsModule } from './modules/products/products.module';
     NavbarComponent,
     SideMenuComponent,
     HeroComponent,
-    FooterComponent
+    FooterComponent,
+    //FilterPipe
   ],
   imports: [
     BrowserModule,

@@ -4,26 +4,32 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProductModel } from 'src/app/models/products/product.model';
 import { ProductService } from 'src/app/services/products/product.service';
 import { SecurityService } from 'src/app/services/security.service';
+import { AppModule } from 'src/app/app.module';
+
+
 
 declare const showMessage: any;
 
 @Component({
   selector: 'app-product-list-home',
   templateUrl: './product-list-home.component.html',
-  styleUrls: ['./product-list-home.component.css']
+  styleUrls: ['./product-list-home.component.css'],
 })
 export class ProductListHomeComponent implements OnInit {
   fgValidator: FormGroup;
   productId: String;
   productList: ProductModel[];
 
-  constructor(private fb: FormBuilder,
+  constructor(
+    private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private service: ProductService,
     private secService: SecurityService) {
       this.productId = this.route.snapshot.params["id"];
      }
+
+     filterProduct = '';
 
   ngOnInit(): void {
     this.FormBuilding();

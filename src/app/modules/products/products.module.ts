@@ -11,17 +11,27 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ProductImagesComponent } from './admin/product-images/product-images.component';
+import { FilterPipe } from '../../pipes/filter.pipe';
 
 
 @NgModule({
-  declarations: [ProductCreationComponent, ProductEditionComponent, ProductListComponent, ProductListHomeComponent, ProductDetailsComponent, ProductImagesComponent],
+  declarations: [
+    ProductCreationComponent, 
+    ProductEditionComponent, 
+    ProductListComponent, 
+    ProductListHomeComponent, 
+    ProductDetailsComponent, 
+    ProductImagesComponent,
+    FilterPipe
+  ],
   imports: [
     CommonModule,
     ProductsRoutingModule,
     NgxPaginationModule,
     NgxSpinnerModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
   ],
   exports:[
     ProductListHomeComponent

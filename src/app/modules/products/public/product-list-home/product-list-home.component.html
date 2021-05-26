@@ -2,12 +2,14 @@
     <h5>¿Qué estas buscando?</h5>
     <div class="col">
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Buscar producto...">
+            <input type="text" class="form-control" name="filterProduct" placeholder="Buscar producto..." [(ngModel)]="filterProduct">
+            <!-- [(ngModel)]="filterProduct" -->
         </div>
     </div>
 </div>
 <div class="row">
-    <div *ngFor="let p of productList" class="col s3 m3">
+    <div *ngFor="let p of productList | filter:filterProduct" class="col s3 m3">
+        <!-- filter:filterProduct -->
         <div class="col s12 m12 card">
             <div class="card-image">
                 <img src="http://localhost:3000/files/2/{{p.images[0].id}}" class="productImage" />
