@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
     }else{
       //showMessage("Registrando..."); // Mensaje cuando el formulario es válido
       let model = this.getLoginData(); // Retorna un objeto tipo modelo, que es el que se envia al servicio
-      console.log(model);
+      //console.log(model);
       this.service.CustomerLogin(model).subscribe(
         data =>{
           this.service.saveSessionData(data);
