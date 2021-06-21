@@ -1,65 +1,37 @@
-<!--
 <div class="row">
-  <div class="col lg4 sm4">
-    <img *ngFor="let i of images" class="materialboxed"
-      data-caption="A picture of a way with a group of trees in a park" width="250"
-      src="http://localhost:3000/files/2/{{i.id}}">
+  <div class="col s12 m7">
+    <div class="card">
+      <div class="card-image">
+        <img *ngFor="let i of images" class="card-img-top img-fluid" src="http://localhost:3000/files/2/{{i.id}}">
+      </div>
+      <div class="card-content">
+        <h5 class="card-title">{{productDetails.name}}</h5>
+        <p class="card-text">Descripción: {{productDetails.description}}</p>
+        <p class="card-text">Precio: {{productDetails.price | currency}}</p>
+        <p class="card-text">Categoria: {{productDetails.category.name}}</p>
+        <p class="card-text">Marca: {{productDetails.brand.name}}</p>
+        <p class="card-text">Disponibles: {{productDetails.stock}}</p>
+      </div>
+      <div class="card-action">
+        <div class="row">
+          <div class="col s5">
+            <!-- Boton regresar atrás -->
+            <button class="waves-effect waves-light btn-small blue" (click)="backToHome()" type="button"
+              name="action">Atras
+              <i class="material-icons right">arrow_back</i>
+            </button>
+            &nbsp;
+            <!-- Boton carrito de compras -->
+            <button class="waves-effect waves-light btn-small orange" (click)="AddToShoppingCart()" type="button"
+              name="action">Añadir
+              <i class="material-icons right">add_shopping_cart</i>
+            </button>
+          </div>
+          <div class="col s4">
+            <input type="number" value="1" [(ngModel)]="amount">
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-
-<h6>{{productDetails.description}}</h6>
-<table>
-  <thead>
-    <tr>
-      <td>
-        Name
-      </td>
-      <td>
-        Price
-      </td>
-      <td>
-        Category
-      </td>
-      <td>
-        Brand
-      </td>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        {{productDetails.name}}
-      </td>
-      <td>
-        {{productDetails.price}}
-      </td>
-      <td>
-        {{productDetails.category.name}}
-      </td>
-      <td>
-        {{productDetails.brand.name}}
-      </td>
-    </tr>
-  </tbody>
-</table>
--->
-
-<div class="card">
-  <img *ngFor="let i of images" class="card-img-top img-fluid" src="http://localhost:3000/files/2/{{i.id}}">
-  <div class="card-body">
-    <h5 class="card-title">{{productDetails.name}}</h5>
-    <p class="card-text">Description: {{productDetails.description}}</p>
-    <p class="card-text">Price: {{productDetails.price | currency}}</p>
-    <p class="card-text">Category: {{productDetails.category.name}}</p>
-    <p class="card-text">Brand: {{productDetails.brand.name}}</p>
-    <p class="card-text">Inventory: {{productDetails.stock}}</p>
-    <!-- Boton carrito de compras -->
-    <!-- 
-    <button (click)="AddToShoppingCart()" class="btn waves-effect waves-light orange" type="button">Añadir
-      <i class="material-icons left">add_shopping_cart</i>
-    </button>
-    -->
-    <a routerLink="/parameters/home" class="waves-effect waves-light btn blue"><i class="material-icons right">arrow_back</i>Atras</a>
-  </div>
-</div>
-

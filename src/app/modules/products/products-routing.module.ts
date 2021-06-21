@@ -6,6 +6,7 @@ import { ProductEditionComponent } from './admin/product-edition/product-edition
 import { ProductImagesComponent } from './admin/product-images/product-images.component';
 import { ProductListComponent } from './admin/product-list/product-list.component';
 import { ProductDetailsComponent } from './public/product-details/product-details.component';
+import { ShoppingCartComponent } from './public/shopping-cart/shopping-cart.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,10 @@ const routes: Routes = [
   {
     path: 'product-details/:id',
     component: ProductDetailsComponent
+  },
+  {
+    path: 'shopping-cart',
+    component: ShoppingCartComponent
   }
 ];
 

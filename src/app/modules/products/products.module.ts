@@ -12,6 +12,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ProductImagesComponent } from './admin/product-images/product-images.component';
 import { FilterPipe } from '../../pipes/filter.pipe';
+import { ShoppingCartComponent } from './public/shopping-cart/shopping-cart.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { FilterPipe } from '../../pipes/filter.pipe';
     ProductListHomeComponent, 
     ProductDetailsComponent, 
     ProductImagesComponent,
-    FilterPipe
+    FilterPipe,
+    ShoppingCartComponent
   ],
   imports: [
     CommonModule,

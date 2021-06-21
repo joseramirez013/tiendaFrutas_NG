@@ -2,7 +2,8 @@
     <h5>¿Qué estas buscando?</h5>
     <div class="col">
         <div class="form-group">
-            <input type="text" class="form-control" name="filterProduct" placeholder="Buscar producto..." [(ngModel)]="filterProduct">
+            <input type="text" class="form-control" name="filterProduct" placeholder="Buscar producto..."
+                [(ngModel)]="filterProduct">
             <!-- [(ngModel)]="filterProduct" -->
         </div>
     </div>
@@ -20,30 +21,12 @@
                 <p class="card-text">Precio: {{p.price | currency}}</p>
                 <p class="card-text">Disponibles: {{p.stock}}</p>
             </div>
-            
-            <form [formGroup]="fgValidator">
-                <div class="card-tabs">
-                    <ul class="tabs tabs-fixed-width">
-                        <li class="tab">
-                            <button class="waves-effect waves-light btn-small blue" (click)="OpenDetails(p.id)"
-                                type="button" name="action">Ver mas
-                            </button>
-                        </li>
-                        &nbsp; &nbsp;
-                        <li class="tab">
-                            <!-- Boton carrito de compras -->
-                            <button (click)="AddToShoppingCart()" class="waves-effect waves-light btn-small orange"
-                                type="button">Añadir
-                            </button>
-                        </li>
-                        &nbsp; &nbsp; &nbsp;
-                        <li class="tab">
-                            <input id="amount" formControlName="amount" type="number" class="validate">
-                            <!-- <label for="amount">Qty.</label> -->                    
-                        </li>
-                    </ul>
-                </div>
-            </form>
+
+            <button class="waves-effect waves-light btn-small blue" (click)="OpenDetails(p.id)" type="button"
+                name="action">Ver mas
+            </button>
+
+
         </div>
     </div>
 </div>
