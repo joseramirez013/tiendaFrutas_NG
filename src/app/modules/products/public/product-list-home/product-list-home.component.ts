@@ -6,7 +6,6 @@ import { ProductService } from 'src/app/services/products/product.service';
 import { SecurityService } from 'src/app/services/security.service';
 import { AppModule } from 'src/app/app.module';
 
-
 declare const showMessage: any;
 
 @Component({
@@ -16,26 +15,18 @@ declare const showMessage: any;
 })
 export class ProductListHomeComponent implements OnInit {
 
-  fgValidator: FormGroup;
-  productId: String;
   productList: ProductModel[];
   
   constructor(
-    private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private service: ProductService,
-    private secService: SecurityService) {
-      //this.productList = this.route.snapshot.params["id"];
-    //console.log(this.productList);      
+    private service: ProductService) {      
      }
 
      filterProduct = '';
 
   ngOnInit(): void {
-    this.FormBuilding();
     this.getAllProducts();
-    //this.getDataOfProduct();
   }
 
   /**
@@ -52,35 +43,8 @@ export class ProductListHomeComponent implements OnInit {
       }
     );
   }
-  /*
-  getDataOfProduct() {
-    this.service.getRecordById(this.productId).subscribe(
-      data => {
-        console.log("subscrito");
-        //this.productList = data;
-        //this.images = this.productDetails.images;
-      },
-      err => {
-
-      }
-    );
-  }
-  */
 
   OpenDetails(id) {
     this.router.navigate([`/products/product-details/${id}`]);
   }
-
-  FormBuilding() {
-    this.fgValidator = this.fb.group({
-      amount: ['1', [Validators.required]]
-    });
-  }
-
- 
-  //Devuelve los controles
-  get fgv(){
-    return this.fgValidator.controls;
-  }
-
 }

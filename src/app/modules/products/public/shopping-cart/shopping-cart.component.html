@@ -1,1 +1,36 @@
-<p>shopping-cart works!</p>
+<div class="row">
+    <div *ngFor="let i of saleItemList" class="col s8 m8 l9">
+        <!-- filter:filterProduct -->
+        <div class="card">
+            <!-- <div class="card-image">
+                <img src="http://localhost:3000/files/2/{{i.images[0].productId}}" class="productImage" />
+            </div> -->
+            <!-- <div class="card-image">
+                <img *ngFor="let p of images" class="card-img-top img-fluid"
+                    src="http://localhost:3000/files/2/{{p.id}}" class="productImage" />
+            </div> -->
+            <div class="card-content">
+                <p>Nombre: {{i.name | titlecase }}</p>
+                <p>Precio: {{i.price | currency}}</p>
+                <p>Unidades: {{i.amount}}</p>
+                <p>Subtotal: {{ (i.amount * i.price) | currency }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col s4 m4 l3">
+        <div class="cart-total">
+            <p>{{totalItems}}</p>
+            <p> Total: {{ cartTotal| currency}}</p>
+        </div>
+        <!-- Boton regresar atrás -->
+        <button class="waves-effect waves-light btn-small blue" (click)="backToHome()" type="button" name="action">Atras
+            <i class="material-icons right">arrow_back</i>
+        </button>
+        &nbsp;
+        <!-- Boton pagar -->
+        <button class="waves-effect waves-light btn-small orange" (click)="toPay()" type="button"
+            name="action">Pagar
+            <i class="material-icons right">payment</i>
+        </button>
+    </div>
+</div>

@@ -13,6 +13,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ProductImagesComponent } from './admin/product-images/product-images.component';
 import { FilterPipe } from '../../pipes/filter.pipe';
 import { ShoppingCartComponent } from './public/shopping-cart/shopping-cart.component';
+import { CartComponent } from './public/shopping-cart/cart/cart.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { ShoppingCartComponent } from './public/shopping-cart/shopping-cart.comp
     ProductDetailsComponent, 
     ProductImagesComponent,
     FilterPipe,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    CartComponent
   ],
   imports: [
     CommonModule,

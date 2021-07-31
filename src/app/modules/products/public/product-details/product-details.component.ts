@@ -15,9 +15,12 @@ declare const showMessage: any;
 })
 export class ProductDetailsComponent implements OnInit {
 
-  amount: number;
-  fgValidator: FormGroup;
+  
   productId: String;
+  name: String;
+  price: number;
+  amount: number = 1;
+  fgValidator: FormGroup;
   productDetails: ProductModel;
   images: ProductImageModel[];
 
@@ -26,7 +29,7 @@ export class ProductDetailsComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private service: ProductService,
-    private secService: SecurityService) {
+    private secService: SecurityService,) {
     this.productId = this.route.snapshot.params["id"];
   }
 
@@ -39,8 +42,9 @@ export class ProductDetailsComponent implements OnInit {
     this.service.getRecordById(this.productId).subscribe(
       data => {
         this.productDetails = data;
-        //console.log(this.productDetails);
         this.images = this.productDetails.images;
+        // console.log("Product Details");
+        // console.log(this.productDetails); 
       },
       err => {
 
@@ -52,14 +56,18 @@ export class ProductDetailsComponent implements OnInit {
    */
   AddToShoppingCart() {
     let saleItemData = {
-      cartId: this.secService.getCartId(), //Devuelve el id del carrito de compras del usuario que esta en sesion
+      name: this.productDetails.name,
+      price: this.productDetails["price"],
+      amount: this.amount, //Obtener el valor del campo "amount"
       productId: this.productDetails["id"],
-      amount: this.amount, //Obtener el valor del campo "amount" 
+      cartId: this.secService.getCartId(), //Devuelve el id del carrito de compras del usuario que esta en sesion
     }
+   
     //Enviar dentro del producto el cartId y el productId
     this.service.AddToShoppingCart(saleItemData).subscribe(
       data => {
-        //console.log(saleItemData);
+        // console.log("Se enviaron los datos:");
+        // console.log(saleItemData);
         showMessage("Your product has been sucessfully added to the shopping cart!");
       },
       err => {
@@ -74,12 +82,6 @@ export class ProductDetailsComponent implements OnInit {
   backToHome() {
     this.router.navigate([`/home/`]);
   }
-
-  /* FormBuilding() {
-    this.fgValidator = this.fb.group({
-      amount: [Validators.required]
-    });
-  } */
 
   //Devuelve los controles
   get fgv() {
