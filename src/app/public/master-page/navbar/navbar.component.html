@@ -4,7 +4,7 @@
 
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li><a routerLink="/home">Home</a></li>
-      <li><a routerLink="/products/shopping-cart">Cart <span class="new badge"> {{totalItems}} </span></a></li>
+      <li><a routerLink="/products/shopping-cart">Cart <span class="badge blue white-text"> {{ dataService.totalCartItems }} </span></a></li>
       <li *ngIf="!isLogged"><a routerLink="/security/login">Login</a></li>
       <li *ngIf="isLogged"><a routerLink="/security/logout">Logout</a></li>
       <li *ngIf="isLogged"><a routerLink="/security/change-password">Change password</a></li>

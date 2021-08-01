@@ -1,11 +1,14 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductImageModel } from 'src/app/models/products/product-image.model';
 import { ProductService } from 'src/app/services/products/product.service';
 import { SecurityService } from 'src/app/services/security.service';
 import { SaleItemService } from 'src/app/services/shopping-cart/sale-item.service';
 import { SaleItemModel } from '../../../../models/shoppingCart/sale-item.model';
+import { DataService } from 'src/app/services/data.service';
 import { ProductModel } from 'src/app/models/products/product.model';
+
+
 
 
 declare const showMessage: any;
@@ -17,7 +20,7 @@ declare const showMessage: any;
 })
 export class ShoppingCartComponent implements OnInit{
 
-  @Output() totalItems: number;
+  totalItems: number;
   saleItemList: SaleItemModel;
   cartId: String;
   images: ProductImageModel[];
@@ -30,7 +33,8 @@ export class ShoppingCartComponent implements OnInit{
     private router: Router,
     private service: SaleItemService,
     private prodService: ProductService,
-    private secService: SecurityService) {
+    private secService: SecurityService,
+    private dataService: DataService) {
     this.cartId = this.secService.getCartId();
   }
 
@@ -53,9 +57,9 @@ export class ShoppingCartComponent implements OnInit{
           // console.log("Product Id");
           // console.log(this.productId);
         }
-        this.totalItems = totalProducts;
         this.cartTotal = totalPrice;
-        
+        this.totalItems = totalProducts;
+        this.dataService.totalCartItems = this.totalItems;
       },
       err => {
         showMessage("Error loading the product list.");

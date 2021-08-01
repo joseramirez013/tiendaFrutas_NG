@@ -3,8 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductImageModel } from 'src/app/models/products/product-image.model';
 import { ProductModel } from 'src/app/models/products/product.model';
+import { SaleItemModel } from 'src/app/models/shoppingCart/sale-item.model';
+import { DataService } from 'src/app/services/data.service';
 import { ProductService } from 'src/app/services/products/product.service';
 import { SecurityService } from 'src/app/services/security.service';
+import { SaleItemService } from 'src/app/services/shopping-cart/sale-item.service';
 
 declare const showMessage: any;
 
@@ -23,19 +26,25 @@ export class ProductDetailsComponent implements OnInit {
   fgValidator: FormGroup;
   productDetails: ProductModel;
   images: ProductImageModel[];
+  cartId: String;
+  saleItemList: SaleItemModel;
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
     private service: ProductService,
-    private secService: SecurityService,) {
+    private salService: SaleItemService,
+    private secService: SecurityService,
+    private dataService: DataService) {
     this.productId = this.route.snapshot.params["id"];
+    this.cartId = this.secService.getCartId();
   }
 
   ngOnInit(): void {
     //this.FormBuilding();
     this.getDataOfProduct();
+    this.getAllCartItems();
   }
 
   getDataOfProduct() {
@@ -48,6 +57,23 @@ export class ProductDetailsComponent implements OnInit {
       },
       err => {
 
+      }
+    );
+  }
+
+  getAllCartItems(){
+    this.salService.getRecordById(this.cartId).subscribe(
+      data =>{
+        this.saleItemList = data;
+        let totalProducts = 0;
+        for (var item in this.saleItemList) {
+          totalProducts += (this.saleItemList[item]['amount']);
+        }
+        this.dataService.totalCartItems = totalProducts;
+
+      },
+      err => {
+        showMessage("Error loading the total cart items.");
       }
     );
   }
@@ -68,6 +94,7 @@ export class ProductDetailsComponent implements OnInit {
       data => {
         // console.log("Se enviaron los datos:");
         // console.log(saleItemData);
+        this.getAllCartItems();
         showMessage("Your product has been sucessfully added to the shopping cart!");
       },
       err => {

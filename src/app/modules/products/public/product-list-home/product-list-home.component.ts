@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProductModel } from 'src/app/models/products/product.model';
 import { ProductService } from 'src/app/services/products/product.service';
 import { SecurityService } from 'src/app/services/security.service';
-import { AppModule } from 'src/app/app.module';
 
 declare const showMessage: any;
 
@@ -16,12 +15,12 @@ declare const showMessage: any;
 export class ProductListHomeComponent implements OnInit {
 
   productList: ProductModel[];
+ 
   
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private service: ProductService) {      
-     }
+    private service: ProductService) { }
 
      filterProduct = '';
 

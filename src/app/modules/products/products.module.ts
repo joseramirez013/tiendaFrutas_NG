@@ -38,7 +38,7 @@ import { CartComponent } from './public/shopping-cart/cart/cart.component';
     
   ],
   exports:[
-    ProductListHomeComponent
+    ProductListHomeComponent,
   ]
 })
 export class ProductsModule { }
