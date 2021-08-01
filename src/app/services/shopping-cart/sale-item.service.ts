@@ -63,5 +63,17 @@ export class SaleItemService {
       })
     });
   }
+
+  /**
+   * Delete Sale Item Document
+   * @param recordId 
+   */
+  DeleteSaleItem(recordId: String):Observable<any>{
+    return this.http.delete(`${ServiceConfig.BASE_URL}${this.entity}/${recordId}/sale-items?`, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.token}`
+      })
+    });
+  }
     
 }

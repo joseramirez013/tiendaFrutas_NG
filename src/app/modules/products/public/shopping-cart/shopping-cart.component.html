@@ -1,4 +1,5 @@
 <div class="row">
+    <h3>Carrito de compras</h3>
     <div *ngFor="let i of saleItemList" class="col s8 m8 l9">
         <!-- filter:filterProduct -->
         <div class="card">
@@ -17,11 +18,10 @@
             </div>
         </div>
     </div>
-    <div class="cart-buttons col s4 m4 l3">
+    <div class="col s4 m4 l3">
         <div class="cart-total">
-            <p> Total: {{ cartTotal| currency}}</p>
-        </div>
-        <!-- Boton regresar atrás -->
+            <h5> Total: {{ cartTotal| currency}}</h5>
+            <!-- Boton regresar atrás -->
         <button class="back-button waves-effect waves-light btn-small blue" (click)="backToHome()" type="button" name="action">Atras
             <i class="material-icons right">arrow_back</i>
         </button>
@@ -31,5 +31,7 @@
             name="action">Pagar
             <i class="material-icons right">payment</i>
         </button>
+        </div>
+        
     </div>
 </div>

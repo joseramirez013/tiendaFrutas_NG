@@ -34,7 +34,7 @@ export class ProductDetailsComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private service: ProductService,
-    private salService: SaleItemService,
+    private saleService: SaleItemService,
     private secService: SecurityService,
     private dataService: DataService) {
     this.productId = this.route.snapshot.params["id"];
@@ -61,8 +61,11 @@ export class ProductDetailsComponent implements OnInit {
     );
   }
 
+  /**
+   * Calcular el total de productos del carrito de compras
+   */
   getAllCartItems(){
-    this.salService.getRecordById(this.cartId).subscribe(
+    this.saleService.getRecordById(this.cartId).subscribe(
       data =>{
         this.saleItemList = data;
         let totalProducts = 0;
@@ -70,13 +73,13 @@ export class ProductDetailsComponent implements OnInit {
           totalProducts += (this.saleItemList[item]['amount']);
         }
         this.dataService.totalCartItems = totalProducts;
-
       },
       err => {
         showMessage("Error loading the total cart items.");
       }
     );
   }
+
   /**
    * Agregar el producto al carrito de compras
    */
@@ -104,7 +107,7 @@ export class ProductDetailsComponent implements OnInit {
   }
   
 /***
- * Regresar atrás
+ * Volver atrás
  */
   backToHome() {
     this.router.navigate([`/home/`]);
