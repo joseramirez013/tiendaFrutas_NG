@@ -5,7 +5,6 @@
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li><a routerLink="/home">Home</a></li>
       <li *ngIf="isLogged"><a routerLink="/products/shopping-cart">Cart <span class="badge blue white-text"> {{ dataService.totalCartItems }} </span>
-        <!-- <i class="material-icons left">notifications</i> -->
       </a></li>
       <li *ngIf="!isLogged"><a routerLink="/security/login">Login</a></li>
       <li *ngIf="isLogged"><a routerLink="/security/logout">Logout</a></li>

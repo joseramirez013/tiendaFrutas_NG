@@ -20,7 +20,7 @@ export class ProductDetailsComponent implements OnInit {
 
   
   productId: String;
-  name: String;
+  name: String = '';
   price: number;
   amount: number = 1;
   fgValidator: FormGroup;
